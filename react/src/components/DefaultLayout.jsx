@@ -5,6 +5,10 @@ export default function DefaultLayout (){
     
     const {user, token} = userStateContext ()
 
+    const onLogout = (ev) => {
+        ev.DefaultLayout()
+    }
+    
     if (!token) {
         return <Navigate to="/login"/>
     }
@@ -22,7 +26,8 @@ export default function DefaultLayout (){
                         HEADER
                     </div>
                     <div>
-                        USER INFO
+                        {user.name}
+                        <a href="" className="btn-logout" onClick={onLogout}> LogOut </a>
                     </div>
                 </header>
                 <main>
