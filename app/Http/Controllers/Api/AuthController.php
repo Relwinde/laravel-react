@@ -18,7 +18,7 @@ class AuthController extends Controller
         if (! Auth::attempt($credentials)){
             return response([
                 'message' => 'Provided Email address or password is invalid'
-            ]);
+            ], 422);
         }
 
          /** @var User $user */
@@ -57,7 +57,10 @@ class AuthController extends Controller
 
     public function logout(Request $request)  {
 
+        /** @var User $user */
+
         $user = Auth::user();
+
 
         $user->currentAccessToken()->delete();
 

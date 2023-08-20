@@ -20,6 +20,8 @@ export default function Login (){
             password: passwordRef.current.value
         }
 
+        setErrors(null)
+
         axiosClient.post('/login', payLoad)
             .then(({data})=>{
                 setUser(data.user)
@@ -29,9 +31,16 @@ export default function Login (){
                 
                 const response = err.response
 
-                if (response && response.status != 200){
-                    
-                    setErrors(response.data.errors)
+                if (response && response.status == 422){
+
+                    if (response.data.errors){
+                        setErrors(response.data.errors)
+                    } else {
+                        setErrors({
+                            email: [response.data.message]
+                        })
+                    }
+        
 
                 }
             })

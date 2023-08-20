@@ -7,10 +7,22 @@ export default function DefaultLayout (){
     
     const {user, token} = userStateContext ()
 
-    const {setUser} = userStateContext()
+    const {setUser, setToken} = userStateContext()
 
     const onLogout = (ev) => {
         ev.preventDefault()
+
+        axiosClient.post('/logout')
+        .then(() => {
+            setToken(null)
+            setUser({})
+        })
+        .catch(err => {
+            const response = err.response
+
+             
+
+        }) 
     }
 
     // useEffect ( () => {
