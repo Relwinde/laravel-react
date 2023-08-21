@@ -9,7 +9,8 @@ class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
+     * Convert the database model to a json serializable data from the API to any client
+     * 
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
