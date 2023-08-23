@@ -24,8 +24,6 @@ export default function Signup (){
             password_confirmation : passwordConfirmationRef.current.value
         }
 
-        console.log(payLoad)
-
         axiosClient.post('/signup', payLoad)
             .then(({data}) => {
                 setUser(data.user)
