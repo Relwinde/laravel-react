@@ -5,7 +5,7 @@ import axiosClient from "../axios-client";
 
 export default function DefaultLayout (){
     
-    const {user, token} = userStateContext ()
+    const {user, token, notification} = userStateContext ()
 
     const {setUser, setToken} = userStateContext()
 
@@ -57,6 +57,11 @@ export default function DefaultLayout (){
                     <Outlet/>
                 </main>
             </div>
+
+           {notification && <div className="notification">
+                {notification}
+            </div>
+            }
         </div>
     )
 } 
